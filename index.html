@@ -107,16 +107,23 @@
       transform: translateY(-7px) rotate(-45deg);
     }
     .mobile-nav {
-      display: none;
+      display: flex;
       position: absolute;
       top: 64px;
       left: 0;
       right: 0;
       background: var(--bg);
       border-bottom: 2px solid var(--line);
-      padding: 8px 24px;
+      padding: 0 24px;
       flex-direction: column;
       gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .mobile-nav.open {
+      max-height: 300px;
+      padding: 8px 24px;
     }
     .mobile-nav a {
       font-size: 14px;
@@ -135,9 +142,7 @@
     .mobile-nav a:hover, .mobile-nav a.active {
       color: var(--fg);
     }
-    .mobile-nav.open {
-      display: flex;
-    }
+
 
     /* Container */
     .container {
@@ -149,7 +154,6 @@
     /* Hero */
     .hero {
       border-bottom: 2px solid var(--line);
-      min-height: calc(80vh - 64px);
       display: flex;
       align-items: center;
     }
@@ -434,10 +438,8 @@
   </section>
 
   <section class="section-border" id="values">
-    <div class="container">
-      <div style="padding: 64px 0 0;">
-        <p class="section-title">Core Values</p>
-      </div>
+    <div class="container" style="padding: 64px 0;">
+      <p class="section-title">Core Values</p>
       <div class="grid-2">
         <div class="grid-item">
           <span class="number">01 — ⚡ Pragmatic</span>
@@ -514,10 +516,8 @@
   </section>
 
   <section class="section-border" id="tools">
-    <div class="container">
-      <div style="padding: 64px 0 0;">
-        <p class="section-title">My Tools</p>
-      </div>
+    <div class="container" style="padding: 64px 0;">
+      <p class="section-title">My Tools</p>
       <div class="grid-3">
         <div class="grid-item">
           <span class="number">01 — 🌐 Browser</span>
