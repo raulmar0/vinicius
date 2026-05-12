@@ -406,6 +406,37 @@
         gap: 4px;
       }
     }
+
+    /* ---------- View Transitions ---------- */
+    @view-transition {
+      navigation: auto;
+    }
+
+    header { view-transition-name: site-header; }
+    footer { view-transition-name: site-footer; }
+    main   { view-transition-name: page-content; }
+
+    @keyframes slide-out-left  { to   { transform: translateX(-30%); opacity: 0; } }
+    @keyframes slide-in-right  { from { transform: translateX(30%);  opacity: 0; } }
+    @keyframes slide-out-right { to   { transform: translateX(30%);  opacity: 0; } }
+    @keyframes slide-in-left   { from { transform: translateX(-30%); opacity: 0; } }
+
+    ::view-transition-group(site-header),
+    ::view-transition-group(site-footer) {
+      animation: none;
+    }
+
+    ::view-transition-old(page-content),
+    ::view-transition-new(page-content) {
+      animation-duration: 350ms;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      animation-fill-mode: both;
+    }
+
+    :root[data-direction='forward']::view-transition-old(page-content)  { animation-name: slide-out-left; }
+    :root[data-direction='forward']::view-transition-new(page-content)  { animation-name: slide-in-right; }
+    :root[data-direction='backward']::view-transition-old(page-content) { animation-name: slide-out-right; }
+    :root[data-direction='backward']::view-transition-new(page-content) { animation-name: slide-in-left; }
   </style>
 </head>
 <body>
@@ -432,6 +463,7 @@
     </div>
   </header>
 
+  <main>
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
@@ -592,6 +624,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer id="connect">
     <div class="container">
@@ -630,6 +663,25 @@
           !hamburger.contains(e.target)) {
         hamburger.classList.remove('open');
         mobileNav.classList.remove('open');
+      }
+    });
+
+    /* View Transition direction */
+    window.addEventListener('pageswap', (e) => {
+      if (!e.viewTransition) return;
+      const currentUrl = new URL(location.href);
+      const nextUrl = new URL(e.activation.entry.url, location.href);
+      const isCurrentApps = currentUrl.pathname.includes('apps.html');
+      const isNextApps = nextUrl.pathname.includes('apps.html');
+      if (!isCurrentApps && isNextApps) {
+        document.documentElement.dataset.direction = 'forward';
+      } else if (isCurrentApps && !isNextApps) {
+        document.documentElement.dataset.direction = 'backward';
+      }
+    });
+    window.addEventListener('pagereveal', (e) => {
+      if (e.viewTransition) {
+        delete document.documentElement.dataset.direction;
       }
     });
   </script>
