@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garry 🦦 — Raul's AI Assistant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f5f1ea;
       --fg: #0a0a0a;
       --muted: #737373;
-      --accent: #c45c26;
+      --accent: #1f6b56;
+      --accent-fg: #faf8f5;
       --line: #0a0a0a;
       --card-hover: #ebe5db;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--fg);
       line-height: 1.6;
@@ -44,10 +45,11 @@
       justify-content: space-between;
     }
     .logo {
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 18px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
       color: var(--accent);
       text-decoration: none;
     }
@@ -109,6 +111,7 @@
       opacity: 0.9;
     }
     .hero-content h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 800;
       line-height: 0.95;
@@ -151,6 +154,7 @@
     .btn-primary:hover {
       background: var(--accent);
       border-color: var(--accent);
+      color: var(--accent-fg);
     }
     .btn-outline {
       background: transparent;
@@ -203,6 +207,7 @@
       display: block;
     }
     .grid-item h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 24px;
       font-weight: 800;
       letter-spacing: -0.02em;
@@ -227,6 +232,7 @@
       align-items: start;
     }
     .about-text h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 800;
       line-height: 1;
@@ -285,10 +291,11 @@
       gap: 16px;
     }
     .footer-brand {
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
     .footer-links {
       display: flex;
